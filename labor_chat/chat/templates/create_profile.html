@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">
+    {% if form_error %}
+        {% for field in form_error %}
+        {% for error in field.errors %}
+            <p> {{ error }} </p>
+        {% endfor %}
+       {% endfor %}
+    {% endif %}
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -67,8 +69,16 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'labor_chat.wsgi.application'
+WSGI_APPLICATION = 'django_chat.wsgi.application'
+ASGI_APPLICATION = 'django_chat.routing.application'
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+)
+LOGIN_URL = 'login' # this is the name of the url
 
+LOGOUT_REDIRECT_URL = 'login' # this is the name of the url
+
+LOGIN_REDIRECT_URL = '/' # this is the name of the url
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
